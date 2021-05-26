@@ -1,9 +1,14 @@
 const readline = require('readline-sync')
-function start(){
+const robots = {
+    text: require('./robots/text.js')
+}
+async function start(){
     const contentVideo = {}
 
     contentVideo.searchTerm = askAndReturnSearchTerm()
     contentVideo.prefix = askAndReturnPrefix()
+
+    await robots.text(contentVideo)
 
     function askAndReturnSearchTerm(){
         return readline.question('Type a Wikipedia seach term: ')
